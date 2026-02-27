@@ -1,0 +1,68 @@
+[workspace]
+members = [
+    "crates/cybulous-core",
+    "crates/cybulous-consent",
+    "crates/cybulous-crypto",
+    "crates/cybulous-biophysical",
+    "crates/cybulous-web",
+    "tools/cybulous-cli",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["Cybulous Contributors <dev@cybulous.io>"]
+license = "MIT"
+repository = "https://github.com/Doctor0Evil/Cybulous"
+homepage = "https://cybulous.io"
+keywords = ["biophysical", "ai", "orchestration", "cybernetic", "consent"]
+categories = ["web-programming", "cryptography", "science"]
+
+[workspace.dependencies]
+tokio = { version = "1.40", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+async-trait = "0.1"
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+axum = { version = "0.7", features = ["ws", "macros"] }
+tower = { version = "0.5", features = ["timeout", "limit"] }
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+
+# Cryptography
+ed25519-dalek = "2.1"
+x25519-dalek = "2.0"
+aes-gcm = "0.10"
+argon2 = "0.5"
+rand = "0.8"
+zeroize = { version = "1.8", features = ["derive"] }
+
+# Blockchain
+cosmrs = { version = "0.16", features = ["cosmwasm"] }
+cosmwasm-std = "2.1"
+cw-storage-plus = "2.0"
+
+# Biophysical processing
+ndarray = "0.16"
+rustfft = "6.2"
+# Note: blacklisted SHA3-256 avoided - using BLAKE2b instead
+blake2 = "0.10"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.test]
+opt-level = 2
