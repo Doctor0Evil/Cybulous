@@ -38,7 +38,6 @@ tower-http = { version = "0.6", features = ["cors", "trace"] }
 ed25519-dalek = "2.1"
 x25519-dalek = "2.0"
 aes-gcm = "0.10"
-argon2 = "0.5"
 rand = "0.8"
 zeroize = { version = "1.8", features = ["derive"] }
 
@@ -50,8 +49,6 @@ cw-storage-plus = "2.0"
 # Biophysical processing
 ndarray = "0.16"
 rustfft = "6.2"
-# Note: blacklisted SHA3-256 avoided - using BLAKE2b instead
-blake2 = "0.10"
 
 [profile.release]
 opt-level = 3
