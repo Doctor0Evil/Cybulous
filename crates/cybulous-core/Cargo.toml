@@ -1,0 +1,27 @@
+[package]
+name = "cybulous-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+async-trait = { workspace = true }
+reqwest = { workspace = true }
+uuid = { version = "1.10", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+# Internal dependencies
+cybulous-consent = { path = "../cybulous-consent" }
+cybulous-crypto = { path = "../cybulous-crypto" }
+
+[dev-dependencies]
+tokio-test = "0.4"
